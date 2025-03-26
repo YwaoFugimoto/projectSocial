@@ -9,22 +9,22 @@ function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await fetch ('http://localhost:3000/social/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({user_login, user_password})
+    const response = await fetch("http://localhost:3000/social/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_login, user_password }),
     });
     const data = await response.json();
-    if(response.ok)
-      console.log("Login successful", data);
-    else 
-      console.log("Login error: ", data);
+    if (response.ok) console.log("Login successful", data);
+    else console.log("Login error: ", data);
   };
 
   return (
     <>
-      <div className="login-page bg-white">
-        <h1 className="logoLogin"><span className="text-success">S</span>ocial</h1>
+      <div className="login-page bg-white hiddeOver">
+        <h1 className="logoLogin">
+          <span className="text-success">S</span>ocial
+        </h1>
         <div className="login-box">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>

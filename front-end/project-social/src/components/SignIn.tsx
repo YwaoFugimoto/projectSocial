@@ -8,20 +8,18 @@ function SignIn() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await fetch ('http://localhost:3000/social/signin', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ user_login, user_password, username })
+    const response = await fetch("http://localhost:3000/social/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user_login, user_password, username }),
     });
     const data = await response.json();
-    if (response.ok)
-      console.log("User created", data);
-    else
-      console.error("Sign in error: ", data);
+    if (response.ok) console.log("User created", data);
+    else console.error("Sign in error: ", data);
   };
 
   return (
-    <div className="signIn-page">
+    <div className="signIn-page hiddeOver">
       <h1 className="logoLogin">
         <span className="text-success">S</span>ocial
       </h1>
