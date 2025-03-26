@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   
   /* A box de login centralizada com fundo semitransparente */
@@ -64,4 +65,9 @@
 
   body {
     overflow: hidden;
+  }
+
+  .logoLogin{
+    align-items: center;
+    font-size: 100px;
   }
