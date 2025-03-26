@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import "./SignIn.css";
 
 function SignIn() {
-  const [userLogin, setUserLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [user_login, setUserLogin] = useState("");
+  const [user_password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você implementa a lógica de cadastro
-    console.log("Cadastro:", { userLogin, password, username });
+    const response = await fetch ('http://localhost:3000/social/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_login, user_password, username })
+    });
+    const data = await response.json();
+    if (response.ok)
+      console.log("User created", data);
+    else
+      console.error("Sign in error: ", data);
   };
 
   return (
@@ -35,29 +43,29 @@ function SignIn() {
             />
           </div>
           <div className="input-group-signin">
-            <label htmlFor="userLogin" className="form-label">
+            <label htmlFor="user_login" className="form-label">
               Usuário
             </label>
             <input
               type="text"
               className="form-control"
-              id="userLogin"
+              id="user_login"
               placeholder="Escolha um usuário"
-              value={userLogin}
+              value={user_login}
               onChange={(e) => setUserLogin(e.target.value)}
               required
             />
           </div>
           <div className="input-group-signin">
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="user_user_password" className="form-label">
               Senha
             </label>
             <input
               type="password"
               className="form-control"
-              id="password"
+              id="user_password"
               placeholder="Digite sua senha"
-              value={password}
+              value={user_password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />

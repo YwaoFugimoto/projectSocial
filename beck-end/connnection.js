@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 var connection = mysql.createPool({
     port: 3306,
@@ -8,12 +8,14 @@ var connection = mysql.createPool({
     database: 'crud'
 });
 
-connection.getConnection((err) => {
-    if(!err)
+connection.getConnection()
+    .then(conn => {
         console.log('Database connection successful!');
-    else    
-        console.log(err);
-});
+        conn.release(); // Release the connection back to the pool
+      })
+      .catch(err => {
+        console.error(err);
+      });
 
 module.exports = connection
 
