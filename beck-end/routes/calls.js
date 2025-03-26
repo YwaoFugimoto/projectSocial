@@ -31,4 +31,18 @@ router.post('/signin', async(req, res) => {
         res.status(500).json({ error: 'Error creating user' });
     }});
 
+router.post('/login', async(req, res) => {
+    try{
+        const { user_login, user_password } = req.body;
+        const [ result ] = await connection.execute(
+            "select * from social where user_login=? and user_password=?",
+            [user_login, user_password]
+        );
+    res.status(200).json({message: "Login successeful", user: result[0]});
+    }catch (error){
+        console.log("Login error: ", error);
+        res.status(500).json({error: "ERROR!"});
+    }
+})
+
 module.exports = router;

@@ -4,13 +4,21 @@ import "./Login.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function Login() {
-  const [userLogin, setUserLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [user_login, setUserLogin] = useState("");
+  const [user_password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Autenticacao
-    console.log("Login:", userLogin, "Senha:", password);
+    const response = await fetch ('http://localhost:3000/social/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({user_login, user_password})
+    });
+    const data = await response.json();
+    if(response.ok)
+      console.log("Login successful", data);
+    else 
+      console.log("Login error: ", data);
   };
 
   return (
@@ -21,22 +29,22 @@ function Login() {
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label htmlFor="userLogin">Usuário</label>
+              <label htmlFor="user_login">Usuário</label>
               <input
                 type="text"
-                id="userLogin"
-                value={userLogin}
+                id="user_login"
+                value={user_login}
                 onChange={(e) => setUserLogin(e.target.value)}
                 placeholder="Digite seu usuário"
                 required
               />
             </div>
             <div className="input-group">
-              <label htmlFor="password">Senha</label>
+              <label htmlFor="user_password">Senha</label>
               <input
                 type="password"
-                id="password"
-                value={password}
+                id="user_password"
+                value={user_password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Digite sua senha"
                 required
