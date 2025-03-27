@@ -4,15 +4,14 @@ const router = express.Router();
 
 router.get('/:page', async(req, res) => {
     try{
-    const offset = req.params;
+    const offset = parseInt(req.params.page, 10) * 10;
     const [ result ] = await connection.execute(
-        'select * from social limit 10 offset ?',
-        [offset]    
+        `select * from social limit 10 offset ${offset}`,
+        [ offset ]    
     );
         return res.status(200).json(result);
     }catch (error){
-        return res.status(500).json(err);
-
+        return res.status(500).json(error);
     }});
 
 
@@ -42,7 +41,23 @@ router.post('/login', async(req, res) => {
     }catch (error){
         console.log("Login error: ", error);
         res.status(500).json({error: "ERROR!"});
-    }
-})
+    };
+});
+
+router.patch('/profile/:id', async(req, res) => {
+    try{
+        const user_id  = req.params.id; // TODO Something will have to keep user_id
+        const { user_password } = req.body;
+        console.log(user_id, user_password);
+        const [ result ] = await connection.execute(
+            "update social set user_password=? where user_id=?",
+            [ user_password, user_id ]
+        );
+    res.status(200).json({message: "Password changed successfully!", user: result[0]});
+    }catch (error){
+        console.log("Update error", error);
+        res.status(500).json({error: "ERROR!"});
+    };
+});
 
 module.exports = router;
