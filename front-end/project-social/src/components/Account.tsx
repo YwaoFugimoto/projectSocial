@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Account.css";
+import profilePic from "/home/noSecureOption/Projects/Social/front-end/project-social/profilePic.png"
+import { useNavigate } from "react-router-dom";
 
 function AccountPage() {
   const [account] = useState({
@@ -8,12 +10,24 @@ function AccountPage() {
     user_password: "mysecretpassword",
   });
 
+  const navigate = useNavigate();
+
+  const changeRoute = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="account-page">
       <div className="account-box">
-        {/* Profile Photo Placeholder */}
+          <button className="btn btn-success btn-back-home"
+            onClick={changeRoute}
+            > {`<`} Home</button>
         <div className="photo-container">
-          <span className="photo-text">profile photo</span>
+        <img
+            src={profilePic}
+            alt="Profile"
+            className="profile-photo"
+          />
         </div>
 
         <div className="credencials">
