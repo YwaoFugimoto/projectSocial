@@ -1,12 +1,26 @@
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
+
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  const changeRouteToAccount = () => {
+    navigate("/account")
+  }
+
+  const changeRouteToLogin = () => {
+    navigate("/login");
+  }
   return (
     <>
       <div className="fixedContent">
         <div>
           <button className="profile-box">
-            <span className="text-white fw-bold">PROFILE</span>
+            <span className="text-white fw-bold"
+              onClick={changeRouteToAccount}
+            >PROFILE</span>
           </button>
           <button className="settings-box">
             <span className="text-white fw-bold">SETTINGS</span>
@@ -15,7 +29,9 @@ function Home() {
 
         <div>
           <button className="logout-box">
-            <span className="text-white fw-bold">LOGOUT</span>
+            <span className="text-white fw-bold"
+              onClick={changeRouteToLogin}
+            >LOGOUT</span>
           </button>
         </div>
       </div>
