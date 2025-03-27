@@ -1,0 +1,54 @@
+.account-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc; /* Light gray background for the page */
+    height: 100vh;
+  }
+  
+  .account-box {
+    background-color: #bfb7b7; /* Slightly darker gray box */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    width: 800px;
+    height: 500px;
+  }
+
+  .credencials{
+        
+}
+  
+  /* Profile Photo Placeholder */
+  .photo-container {
+    width: 80px;
+    height: 80px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .photo-text {
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+  }
+  
+  /* Account Info Rows */
+  .info-row {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 2.75rem;
+  }
+  
+  .label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+  }
+  
+  .value {
+    font-weight: 400;
+  }
+  
