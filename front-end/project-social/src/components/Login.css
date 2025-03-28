@@ -1,9 +1,20 @@
+
+
 /* A tela inteira com um background */
 .login-page {
     min-height: 100vh;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    font-family:  "Ubuntu", sans-serif;;
+  }
+
+  .about{
+    margin-bottom: 15rem;
     justify-content: center;
     align-items: center;
+    display: flex;
     flex-direction: column;
   }
   

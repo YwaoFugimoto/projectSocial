@@ -22,9 +22,14 @@ function Login() {
   return (
     <>
       <div className="login-page bg-white hiddeOver">
+      <div className="about">
         <h1 className="logoLogin">
-          <span className="text-success">S</span>ocial
+          <span className="text-success">M</span>usify
         </h1>
+        <p>
+          A new way to share your favorite lyrics
+        </p>
+      </div>
         <div className="login-box">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>

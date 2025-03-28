@@ -20,9 +20,14 @@ function SignIn() {
 
   return (
     <div className="signIn-page hiddeOver">
-      <h1 className="logoLogin">
-        <span className="text-success">S</span>ocial
-      </h1>
+      <div className="about">
+        <h1 className="logoLogin">
+          <span className="text-success">M</span>usify
+        </h1>
+        <p>
+          A new way to share your favorite lyrics
+        </p>
+      </div>
       <div className="signIn-box">
         <h3 className="card-title text-center mb-4">Cadastre-se</h3>
         <form onSubmit={handleSubmit}>
@@ -80,6 +85,5 @@ function SignIn() {
     </div>
   );
 }
-
 
 export default SignIn;
