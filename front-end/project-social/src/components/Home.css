@@ -6,6 +6,10 @@ main{
     display: grid;
 }
 
+.modal-header p {
+    margin-left: 11rem;
+}
+
 .post-pit {
     position: fixed;
     background-color: #ffffff;
@@ -15,6 +19,12 @@ main{
     align-items: baseline;
     flex-direction: column-reverse;
     gap: 0.5rem;
+}
+
+.search_user_bar{
+    border-radius: 1rem;
+    border-color: rgb(151, 145, 137);
+    border: 1rem;
 }
 
 .post-pit input{
