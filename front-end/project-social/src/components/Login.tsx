@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 function Login() {
   const [user_login, setUserLogin] = useState("");
   const [user_password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,18 +18,18 @@ function Login() {
       body: JSON.stringify({ user_login, user_password }),
     });
     const data = await response.json();
-    if (response.ok) console.log("Login successful", data);
+    if (response.ok) navigate('/home');
     else console.log("Login error: ", data);
   };
 
   return (
     <>
-      <div className="login-page bg-white hiddeOver">
+      <div className="login-page hiddeOver">
       <div className="about">
-        <h1 className="logoLogin">
+        <h1 className="logoLogin text-black">
           <span className="text-success">M</span>usify
         </h1>
-        <p>
+        <p className="text-black">
           A new way to share your favorite lyrics
         </p>
       </div>
