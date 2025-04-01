@@ -84,3 +84,9 @@
     margin-top: 1rem;
     margin-left: 1rem;
   }
+
+  .modal-body{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
