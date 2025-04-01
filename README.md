@@ -1,4 +1,4 @@
-# Social Network – Simulação de Rede Social para Postagem de Letras de Música
+# Musify – Simulação de Rede Social para Postagem de Letras de Música
 
 Este projeto é uma simulação de rede social voltada para o compartilhamento de letras de músicas. A aplicação permite que os usuários se cadastrem, façam login e publiquem postagens com letras de músicas. Além disso, os usuários podem atualizar suas informações de perfil, como a senha, e visualizar um feed com as postagens recentes.
 
