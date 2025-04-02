@@ -37,7 +37,12 @@ function AccountPage() {
         <div className="info-row">
           <label className="label">Username:</label>
           <span className="value">{account.username}</span>
-          <button type="button" className="btn btn-dark change-usernmae-btn">
+          <button
+            type="button"
+            className="btn btn-dark change-usernmae-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#usernameModal"
+          >
             Change
           </button>
         </div>
@@ -51,24 +56,24 @@ function AccountPage() {
             type="button"
             className="btn btn-dark change-password-btn"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#passwordModal"
           >
             Change
           </button>
         </div>
 
-        {/* <!-- Modal --> */}
+        {/* <!-- Password Modal --> */}
         <div
           className="modal fade"
-          id="exampleModal"
+          id="passwordModal"
           tabIndex={-1}
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="passwordModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="exampleModalLabel">
+                <h1 className="modal-title fs-5" id="passwordModalLabel">
                   Change your password
                 </h1>
                 <button
@@ -83,13 +88,13 @@ function AccountPage() {
                   id="password"
                   type="password"
                   maxLength={20}
-                  placeholder="New password"
+                  placeholder="Confirm new password"
                 ></input>
                 <input
                   id="password"
                   type="password"
                   maxLength={20}
-                  placeholder="Confirm new password"
+                  placeholder="New password"
                 ></input>
               </div>
               <div className="modal-footer">
@@ -100,10 +105,61 @@ function AccountPage() {
                 >
                   Close
                 </button>
-                <button type="button" className="btn btn-primary text-dark">
+                <button type="button" className="btn btn-success text-dark">
                   Save changes
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <!-- Username Modal --> */}
+      <div
+        className="modal fade"
+        id="usernameModal"
+        tabIndex={-1}
+        aria-labelledby="usernameModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="usernameModalLabel">
+                Change your username
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <input
+                id="password"
+                type="password"
+                maxLength={20}
+                placeholder="Confirm new username"
+              ></input>
+              <input
+                id="password"
+                type="password"
+                maxLength={20}
+                placeholder="New username"
+              ></input>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary text-dark"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-success text-dark">
+                Save changes
+              </button>
             </div>
           </div>
         </div>
