@@ -29,7 +29,7 @@ function AccountPage() {
       </div>
 
       <div className="credencials">
-        <div className="info-row-user-login">
+        <div className="info-row">
           <label className="label">user_login:</label>
           <span className="value">{account.user_login}</span>
         </div>
@@ -37,27 +37,25 @@ function AccountPage() {
         <div className="info-row">
           <label className="label">Username:</label>
           <span className="value">{account.username}</span>
+          <button type="button" className="btn btn-dark change-usernmae-btn">
+            Change
+          </button>
         </div>
-
-        <button type="button" className="btn btn-dark text-dark">
-          Change
-        </button>
 
         <div className="info-row">
           <label className="label">Password:</label>
           <span className="value">
             {"*".repeat(account.user_password.length)}
           </span>
+          <button
+            type="button"
+            className="btn btn-dark change-password-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Change
+          </button>
         </div>
-
-        <button
-          type="button"
-          className="btn btn-dark text-dark"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          Change
-        </button>
 
         {/* <!-- Modal --> */}
         <div

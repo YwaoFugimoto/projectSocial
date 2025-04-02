@@ -1,4 +1,4 @@
-.account-page {
+ .account-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,12 +55,17 @@
     flex-direction: column;
     justify-content: center;
     width: 30%;
+    gap: 2rem;
   }
 
-  .credencials button{
-    margin-left: auto;
-    width: 80px;
-    background-color: #bfb7b700;
+  .change-usernmae-btn{
+    position: fixed;
+    margin-left: 5rem;
+  }
+
+  .change-password-btn{
+    position: fixed;
+    margin-left: 2rem;
   }
 
     
@@ -90,3 +95,4 @@
     align-items: center;
     flex-direction: column-reverse;
   }
+  
