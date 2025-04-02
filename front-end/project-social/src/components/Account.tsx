@@ -25,6 +25,9 @@ function AccountPage() {
         </button>
         <div className="photo-container">
           <img src={profilePic} alt="Profile" className="profile-photo" />
+          <div className="photo-overlay">
+            <span>Change Photo</span>
+          </div>
         </div>
       </div>
 
