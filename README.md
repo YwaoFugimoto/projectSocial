@@ -1,44 +1,44 @@
-# Musify – Simulação de Rede Social para Postagem de Letras de Música
+# Musify – Simulation of a Social Network for Posting Song Lyrics
 
-Este projeto é uma simulação de rede social voltada para o compartilhamento de letras de músicas. A aplicação permite que os usuários se cadastrem, façam login e publiquem postagens com letras de músicas. Além disso, os usuários podem atualizar suas informações de perfil, como a senha, e visualizar um feed com as postagens recentes.
+This project is a simulation of a social network focused on sharing song lyrics. The application allows users to register, log in, and publish posts containing song lyrics. In addition, users can update their profile information, such as their password, and view a feed of recent posts.
 
-## Funcionalidades
+## Features
 
-- **Cadastro de Usuário (Sign In):**  
-  Permite o registro de novos usuários. As senhas são encriptadas para garantir a segurança dos dados ultilizando bcrypt.
+- **User Registration (Sign In):**  
+Allows the registration of new users. Passwords are encrypted using bcrypt to ensure data security.
 
-- **Autenticação (Login):**  
-  Usuários podem acessar a plataforma utilizando suas credenciais (user_login e senha) através de uma autenticação simples ultilizando jwt passport.
+- **Authentication (Login):**  
+Users can access the platform using their credentials (user_login and password) via a simple authentication mechanism using JWT and Passport.
 
-- **Feed de Postagens:**  
-  Visualize um feed paginado com postagens de letras de músicas.
+- **Post Feed:**  
+ View a paginated feed of song lyrics posts.
 
-- **Atualização do Perfil:**  
-  Os usuários podem alterar dados do perfil, como a senha, por meio de endpoints dedicados.
+- **Profile Update:**  
+Users can update their profile details, such as their password, via dedicated endpoints.
 
-- **Interface Moderna e Responsiva:**  
-  O front-end é desenvolvido com React (usando Vite e TypeScript) e estilizado com Bootstrap, garantindo uma experiência dinâmica e responsiva.
+- **Modern and Responsive Interface:**  
+The front-end is developed with React (using Vite and TypeScript) and styled with Bootstrap, ensuring a dynamic and responsive user experience.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 ### Back-End
 
 - **Node.js & Express:**  
-  Criação da API REST que gerencia as operações CRUD.
+Creation of the REST API that manages CRUD operations.
 - **MySQL & mysql2/promise:**  
-  Banco de dados relacional para armazenar informações de usuários e postagens.
+ A relational database used to store user and post information.
 - **Middleware de Segurança:**  
-  Encriptação de senhas e autenticação (usuário e senha).
+Password encryption and authentication (user login and password).
 
 ### Front-End
 
-- **React com TypeScript:**  
-  Desenvolvimento da interface do usuário.
+- **React with TypeScript:**  
+Development of the user interface.
 - **Vite:**  
-  Ferramenta de desenvolvimento rápida e eficiente.
+A fast and efficient development tool.
 - **Bootstrap:**  
-  Para estilização e componentes responsivos.
+For styling and responsive components.
 
-### Considerações
+### Considerations
 
-Este projeto é uma base para o desenvolvimento de uma rede social com foco em letras de músicas. Embora a autenticação seja simples (usuário/senha) e as senhas sejam encriptadas, o sistema pode ser expandido para incluir recursos mais robustos, como autenticação JWT, gerenciamento de sessões e funcionalidades adicionais.
+This project serves as a foundation for developing a social network focused on song lyrics. Although the current authentication is simple (username/password) and passwords are encrypted, the system can be expanded to include more robust features such as JWT authentication, session management, and additional functionalities.
