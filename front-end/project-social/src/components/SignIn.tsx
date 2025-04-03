@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import "./SignIn.css";
+import { useNavigate } from "react-router-dom";
 
 function SignIn() {
   const [user_login, setUserLogin] = useState("");
   const [user_password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/social/signin", {
+    const response = await fetch("http://localhost:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_login, user_password, username }),
     });
     const data = await response.json();
-    if (response.ok) console.log("User created", data);
+    console.log(response);
+    if (response.ok){ 
+      console.log("Sigin successeful", data);
+      navigate("/login");
+    }
     else console.error("Sign in error: ", data);
   };
 
