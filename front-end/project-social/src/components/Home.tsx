@@ -4,8 +4,36 @@ import musicIcon from "/home/noSecureOption/Projects/Social/front-end/project-so
 import emojiIcon from "/home/noSecureOption/Projects/Social/front-end/project-social/emoji-smile.svg";
 import photoIcon from "/home/noSecureOption/Projects/Social/front-end/project-social/image.svg";
 import "bootstrap/dist/js/bootstrap.js";
+import "bootstrap/dist/css/bootstrap.css"
+import { useEffect, useState } from "react";
 
 function Home() {
+
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/users/authStatus", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (response.ok) {
+        console.log(response)
+      }else{
+        console.log('User not authorized');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error("Error checking auth status", error);
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<{ id: number; username: string }[]>([]);
+
   const navigate = useNavigate();
 
   const changeRouteToAccount = () => {
@@ -15,6 +43,32 @@ function Home() {
   const changeRouteToLogin = () => {
     navigate("/login");
   };
+
+  // API calls here.  
+  const allUsers = [
+    { id: 1, username: "john123" },
+    { id: 2, username: "janeDoe" },
+    { id: 3, username: "alice1985" },
+    { id: 4, username: "bob_the_builder" },
+  ];
+
+  const handleSearchChange = (e: { target: { value: any } }) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === "") {
+      setSearchResults([]);
+    } else {
+      // Filter users that contain the query (case-insensitive)
+      const results = allUsers.filter((user) =>
+        user.username.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(results);
+    }
+  };
+
+
+
 
   return (
     <>
@@ -49,7 +103,7 @@ function Home() {
         </div>
       </div>
 
-      {/* <!-- Modal --> */}
+      {/* Modal for user search */}
       <div
         className="modal fade"
         id="exampleModal"
@@ -57,7 +111,7 @@ function Home() {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <p className="modal-title fs-5" id="exampleModalLabel">
@@ -71,25 +125,24 @@ function Home() {
               ></button>
             </div>
             <div className="modal-body">
+            <div className="search-results">
+                {searchResults.map((user) => (
+                  <div key={user.id} className="search-result-item">
+                    {user.username}
+                  </div>
+                ))}
+              </div>
+
               <input
                 className="search_user_bar"
                 id="search_user"
                 type="text"
                 maxLength={20}
                 placeholder="Username"
-              ></input>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary text-dark"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary text-dark">
-                Save changes
-              </button>
+                onChange={handleSearchChange}
+                value={searchQuery}
+              />
+
             </div>
           </div>
         </div>
@@ -111,7 +164,7 @@ function Home() {
               type="button"
               className="btn btn-success post-pit-bottom-button"
             >
-              Post!
+              Post
             </button>
           </div>
 
