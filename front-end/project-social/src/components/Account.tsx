@@ -1,10 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Account.css";
 import profilePic from "/home/noSecureOption/Projects/Social/front-end/project-social/profilePic.png";
 import { useNavigate } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.js";
 
 function AccountPage() {
+
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/users/authStatus", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (response.ok) {
+        console.log(response)
+      }else{
+        console.log('User not authorized');
+        navigate('/login');
+      }
+    } catch (error) {
+      console.error("Error checking auth status", error);
+      navigate("/login");
+    }
+  };
+
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
+  
   const [account] = useState({
     username: "John Doe",
     user_login: "john123",
@@ -88,13 +111,13 @@ function AccountPage() {
               </div>
               <div className="modal-body">
                 <input
-                  id="password"
+                  id="confirmNewPassword"
                   type="password"
                   maxLength={20}
                   placeholder="Confirm new password"
                 ></input>
                 <input
-                  id="password"
+                  id="newPassword"
                   type="password"
                   maxLength={20}
                   placeholder="New password"
@@ -140,14 +163,14 @@ function AccountPage() {
             </div>
             <div className="modal-body">
               <input
-                id="password"
-                type="password"
+                id="confirmNewUsername"
+                type="text"
                 maxLength={20}
                 placeholder="Confirm new username"
               ></input>
               <input
-                id="password"
-                type="password"
+                id="newUsername"
+                type="text"
                 maxLength={20}
                 placeholder="New username"
               ></input>
