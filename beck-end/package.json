@@ -1,7 +1,7 @@
 {
   "name": "beck-end",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "startDev": "nodemon server.js"
@@ -11,11 +11,20 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "axios": "^1.8.4",
+    "bcrypt": "^5.1.1",
+    "cheerio-without-node-native": "^0.20.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
-    "mysql2": "^3.14.0"
+    "express-flash": "^0.0.2",
+    "express-session": "^1.18.1",
+    "mongoose": "^8.13.1",
+    "mysql2": "^3.14.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "dotenv": "^16.4.7",
     "nodemon": "^3.1.9"
   }
 }
