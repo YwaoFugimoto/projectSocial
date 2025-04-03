@@ -1,7 +1,8 @@
+const dot = require('dotenv').config();
 const getLyrics = require("../lib/getLyrics");
 const getSong = require('../lib/getSong');
 const options={
-    apiKey:'Z8rh4W0g9CuL7eMFW-7YIdJZLc__guPGo_jXx11r4mYQJi1W7R7vIFJPHq5YKIIK',
+    apiKey:dotprocess.env.API_KEY_SECRET,
     title: 'ball w/o you',
     artist: '21 savage',
     optimizeQuery:true
