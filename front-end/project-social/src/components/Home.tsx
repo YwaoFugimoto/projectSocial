@@ -4,11 +4,10 @@ import musicIcon from "/home/noSecureOption/Projects/Social/front-end/project-so
 import emojiIcon from "/home/noSecureOption/Projects/Social/front-end/project-social/emoji-smile.svg";
 import photoIcon from "/home/noSecureOption/Projects/Social/front-end/project-social/image.svg";
 import "bootstrap/dist/js/bootstrap.js";
-import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.css";
 import { useEffect, useState } from "react";
 
 function Home() {
-
   const checkAuthStatus = async () => {
     try {
       const response = await fetch("http://localhost:3000/users/authStatus", {
@@ -16,10 +15,10 @@ function Home() {
         credentials: "include",
       });
       if (response.ok) {
-        console.log(response)
-      }else{
-        console.log('User not authorized');
-        navigate('/login');
+        console.log(response);
+      } else {
+        console.log("User not authorized");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Error checking auth status", error);
@@ -32,19 +31,34 @@ function Home() {
   }, []);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState<{ id: number; username: string }[]>([]);
+  const [searchResults, setSearchResults] = useState<
+    { id: number; username: string }[]
+  >([]);
 
   const navigate = useNavigate();
 
-  const changeRouteToAccount = () => {
+  const changeRouteToAccount = async () => {
     navigate("/account");
   };
 
-  const changeRouteToLogin = () => {
-    navigate("/login");
+  const changeRouteToLogOut = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/users/logout", {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (response.ok) {
+        console.log("User loged");
+        navigate("/login");
+      } else {
+        console.log("?");
+      }
+    } catch (error) {
+      console.error("Error loggin out", error);
+    }
   };
 
-  // API calls here.  
+  // API calls here.
   const allUsers = [
     { id: 1, username: "john123" },
     { id: 2, username: "janeDoe" },
@@ -66,9 +80,6 @@ function Home() {
       setSearchResults(results);
     }
   };
-
-
-
 
   return (
     <>
@@ -93,13 +104,15 @@ function Home() {
         </div>
 
         <div>
-          <button
-            type="button"
-            className="btn logout-box text-black"
-            onClick={changeRouteToLogin}
-          >
-            LOGOUT
-          </button>
+          <form>
+            <button
+              type="button"
+              className="btn logout-box text-black"
+              onClick={changeRouteToLogOut}
+            >
+              LOGOUT
+            </button>
+          </form>
         </div>
       </div>
 
@@ -125,7 +138,7 @@ function Home() {
               ></button>
             </div>
             <div className="modal-body">
-            <div className="search-results">
+              <div className="search-results">
                 {searchResults.map((user) => (
                   <div key={user.id} className="search-result-item">
                     {user.username}
@@ -142,7 +155,6 @@ function Home() {
                 onChange={handleSearchChange}
                 value={searchQuery}
               />
-
             </div>
           </div>
         </div>
