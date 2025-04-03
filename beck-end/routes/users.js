@@ -2,6 +2,22 @@ const express = require('express')
 const router= express.Router()
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const passport = require('passport')
+
+const initializePassport = require('../passport-config')
+
+initializePassport(
+  passport, 
+  async (user_login) => await User.findOne({ user_login }),
+  async (id) => await User.findById(id), 
+)
+
+function ensureAuthenticated(req, res, next) { //check if user is authenticated
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  return res.status(401).json({ message: "User not authenticated" });
+}
 
 
 router.get('/users', async (req, res) => {
@@ -33,62 +49,40 @@ router.post('/signin', async (req, res) => {
 
     })
 
-// router.post('/login', async (req, res) => {
-//     const user = new User({
-//         user_login: req.body.user_login,
-//         user_password: req.body.user_password
-//     })
-
-//     try{
-//         const find = await User.findOne({user_login: req.body.user_login})
-//         if(find){
-//             const match = bcrypt.compare(find.user_password, user.user_password)
-//             if(match){
-//                 //res.redirect('/home')
-//                 return res.status(200).json({message: "Login successful"})
-//             }else{
-//                 return res.status(404).json({message: "Login or password incorrect"})
-//             }
-//         }else{
-//             return res.status(404).json({message: "Login not foud"})
-//         }
-//     } catch (error){
-//         return res.status(500).json(error)
-//     }
-// })
-
-router.post('/login', async (req, res) => {
-    try {
-      const { user_login, user_password } = req.body;
-      // Busca o usuário pelo user_login
-      const foundUser = await User.findOne({ user_login });
-      if (!foundUser) {
-        return res.status(404).json({ message: "Login not found" });
-      }
-      const match = await bcrypt.compare(user_password, foundUser.user_password);
-      if (match) {
-        // Retorna resposta JSON com sucesso
-        // res.redirect('/home')
-        return res.status(200).json({ message: "Login successful", user: foundUser });
-        // return res.redirect('/home');
-      } else {
-        return res.status(401).json({ message: "Login or password incorrect" });
-      }
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err) {
+      return res.status(500).json({ message: "at user.js /login", error: err.message });
     }
-  });
-  
-  router.delete('/deleteAll', async (req, res) => {
-    try{
-      const del = await User.deleteMany({});
-      return res.status(200)
-    }catch (error) {
-      return res.status(500).json(error)
+    // user = 'pedro'
+    if (!user) {
+      return res.status(401).json({ message: "Login failed at User", info });
     }
-  })
+    console.log(user)
+    req.logIn(user, (err) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      return res.status(200).json({ message: "Login successful", user });
+    });
+  })(req, res, next);
+});
+
+router.get('/authStatus', ensureAuthenticated, ( req, res ) => {
+  res.status(200).json({ user: req.user });
+})
 
 
+
+
+
+router.get('/account', ensureAuthenticated, (req, res) => {
+  return res.status(200).json({ user: req.user });
+});
+
+router.get('/home', ensureAuthenticated, (req, res) => {
+  return res.status(200).json({ user: req.user});
+});
 
 
 module.exports = router;
