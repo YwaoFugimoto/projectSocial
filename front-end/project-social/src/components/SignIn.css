@@ -1,3 +1,8 @@
+body {
+  background-color: #2C3A4B;
+  color: #D8F3DC
+}
+
 .signIn-page {
     min-height: 100vh;
     display: flex;
@@ -6,7 +11,7 @@
   }
 
   .signIn-box {
-    background: rgba(255, 255, 255, 0.9);
+    background: #D8F3DC;
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);

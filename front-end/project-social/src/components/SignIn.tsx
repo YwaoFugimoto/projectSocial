@@ -36,17 +36,16 @@ function SignIn() {
         </p>
       </div>
       <div className="signIn-box">
-        <h3 className="card-title text-center mb-4">Cadastre-se</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group-signin">
+        <h3 className="card-title text-center mb-4 text-black">Sing in</h3>
+        <form onSubmit={handleSubmit} className="text-black">
+          <div className="input-group-signin text-black">
             <label htmlFor="username" className="form-label">
-              Nome
+              Username
             </label>
             <input
               type="text"
-              className="form-control"
+              // className="form-control"
               id="username"
-              placeholder="Digite seu nome"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -54,39 +53,37 @@ function SignIn() {
           </div>
           <div className="input-group-signin">
             <label htmlFor="user_login" className="form-label">
-              Usuário
+              User login
             </label>
             <input
               type="text"
-              className="form-control"
+              // className="form-control"
               id="user_login"
-              placeholder="Escolha um usuário"
               value={user_login}
               onChange={(e) => setUserLogin(e.target.value)}
               required
             />
           </div>
           <div className="input-group-signin">
-            <label htmlFor="user_user_password" className="form-label">
-              Senha
+            <label htmlFor="user_password" className="form-label">
+              Password
             </label>
             <input
               type="password"
-              className="form-control"
+              // className="form-control"
               id="user_password"
-              placeholder="Digite sua senha"
               value={user_password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
-          <button type="submit" className="login-button">
-            Cadastrar
+          <button type="submit" className="login-button text-black">
+            Enter
           </button>
         </form>
-        <div className="text-center mt-3 signup-link">
-          <span>Já tem uma conta? </span>
-          <a href="/login">Entrar</a>
+        <div className="text-center mt-3 signup-link text-black">
+          <span>Already have a account? </span>
+          <a href="/login">Log in</a>
         </div>
       </div>
     </div>
