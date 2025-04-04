@@ -83,11 +83,11 @@ function Home() {
 
   return (
     <>
-      <div className="fixedContent">
+      <div className="fixedContent text-white">
         <div>
           <button
             type="button"
-            className="btn profile-box text-black"
+            className="btn profile-box text-white"
             onClick={changeRouteToAccount}
           >
             PROFILE
@@ -95,7 +95,7 @@ function Home() {
 
           <button
             type="button"
-            className="btn settings-box text-black"
+            className="btn settings-box text-white"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
           >
@@ -107,7 +107,7 @@ function Home() {
           <form>
             <button
               type="button"
-              className="btn logout-box text-black"
+              className="btn logout-box text-white"
               onClick={changeRouteToLogOut}
             >
               LOGOUT
@@ -124,7 +124,7 @@ function Home() {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog modal-dialog-centered">
+        <div className="modal-dialog modal-dialog-centered text-white">
           <div className="modal-content">
             <div className="modal-header">
               <p className="modal-title fs-5" id="exampleModalLabel">
