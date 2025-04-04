@@ -33,44 +33,42 @@ function Login() {
     <>
       <div className="login-page hiddeOver">
         <div className="about">
-          <h1 className="logoLogin text-black">
+          <h1 className="logoLogin">
             <span className="text-success">M</span>usify
           </h1>
-          <p className="text-black">A new way to share your favorite lyrics</p>
+          <p>A new way to share your favorite lyrics</p>
         </div>
-        <div className="login-box">
-          <h2>Login</h2>
+        <div className="login-box text-black">
+          <h2>Log in</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label htmlFor="user_login">Usuário</label>
+              <label htmlFor="user_login">User login</label>
               <input
                 type="text"
                 id="user_login"
                 value={user_login}
                 onChange={(e) => setUserLogin(e.target.value)}
-                placeholder="Digite seu usuário"
                 required
               />
             </div>
             <div className="input-group">
-              <label htmlFor="user_password">Senha</label>
+              <label htmlFor="user_password">Password</label>
               <input
                 type="password"
                 id="user_password"
                 value={user_password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Digite sua senha"
                 required
               />
             </div>
-            <button type="submit" className="login-button">
+            <button type="submit" className="login-button text-black">
               Entrar
             </button>
             <ToastContainer />
           </form>
           <div className="signup-link">
-            <span>Não tem uma conta? </span>
-            <Link to="/signin">Cadastre-se</Link>
+            <span>Don't have a account? </span>
+            <Link to="/signin">Sign in</Link>
           </div>
         </div>
       </div>
