@@ -1,3 +1,6 @@
+<div align="center"><img src="banner/banner-musify.png"></img></div>
+<hr>
+
 # Musify – Simulation of a social network for song lyrics posting
 
 This project is a simulation of a social network focused on sharing song lyrics. The application allows users to register, log in, and publish posts containing song lyrics. In addition, users can update their profile information, such as their password, and view a feed of recent posts.
