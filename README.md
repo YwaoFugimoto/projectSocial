@@ -1,4 +1,4 @@
-<div align="center"><img src="banner/banner-musify.png"></img></div>
+<div align="center"><img src="banner/banner-musify-2.png"></img></div>
 <hr>
 
 # Musify – Simulation of a social network for song lyrics posting
